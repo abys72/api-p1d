@@ -41,3 +41,14 @@ Ejemplo:
 http://localhost:8083/api/v1/auth/access-token
 ```
 
+### 6. Usuarios:
+Por defecto la api generara un usuario y lo insertara en mongo.
+Podemos usar el comando:
+```bash
+ docker logs api_p1d
+```
+Donde podremos ver el usuario y contrseña.
+
+<h4>De igual manera por defecto es:<h4>
+username: admin<br>
+password: admin123
