@@ -16,6 +16,8 @@ class LoginUserQuery:
         try:
             user: User | None = await self.__session.find_one(User, User.name == username,
                                                               User.password == password)
+            if user is None:
+                self.__logger.warning(f"No user found with username '{username}'.")
             return user
         except Exception as e:
             self.__logger.error(f"Error finding user: '{e}'.")

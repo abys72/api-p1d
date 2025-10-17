@@ -28,7 +28,6 @@ class JWTHelper:
 
     @classmethod
     def decode_access_token(cls, token: str, secret_key: str) -> Dict:
-        secret_key: str | None = secret_key
         if not secret_key:
             raise RuntimeError("SECRET_KEY No esta presente")
         encoded_key = base64.urlsafe_b64encode(secret_key.encode()).decode().rstrip("=")

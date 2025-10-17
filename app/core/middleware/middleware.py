@@ -21,5 +21,7 @@ def global_jwt_check():
     try:
         decoded = JWTHelper.decode_access_token(token, secret_key=current_app.config.get("SECRET_KEY"))
         request.jwt_payload = decoded
+        logger.info(f"Token validated successfully for user {decoded.get('sub', 'unknown')}")
     except Exception as e:
+        logger.error(f"Token decoding failed: {str(e)}")
         return CustomResponse.unauthorized(message=f"Token invalid: '{str(e)}'.")

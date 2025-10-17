@@ -5,3 +5,5 @@ uvicorn
 dependency-injector
 testcontainers
 odm-p1d @ git+https://github.com/abys72/odm-p1d.git
+jwt
+pywin32==311; sys_platform == "win32"

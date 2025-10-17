@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_p1d
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+    volumes:
+      - mongodb_data:/data/db
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_p1d
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    environment:
+      MONGO_HOST: mongodb
+volumes:
+  mongodb_data:
+    driver: local
