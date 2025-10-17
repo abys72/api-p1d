@@ -1,0 +1,7 @@
+flask[async]
+flask-restful
+fastapi
+uvicorn
+dependency-injector
+testcontainers
+odm-p1d @ git+https://github.com/abys72/odm-p1d.git
