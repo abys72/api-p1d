@@ -1,5 +1,5 @@
-from typing import List
 from dataclasses import dataclass, field
+from typing import List
 
 
 @dataclass
@@ -10,5 +10,5 @@ class ProductRecommendationModel:
     def __dict__(self):
         return {
             "original_subsequence": self.original_subsequence,
-            "subsequences_generated": self.subsequences_generated
+            "subsequences_generated": self.subsequences_generated,
         }

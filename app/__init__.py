@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+
 from app.core.config import Config
 from app.core.middleware.middleware import global_jwt_check
 from app.routes.v1.routes import register_routes
@@ -18,4 +19,5 @@ def create_app():
     @app.errorhandler(405)
     def handle_405(error):
         return CustomResponse.not_found(message="Resource not found")
+
     return app

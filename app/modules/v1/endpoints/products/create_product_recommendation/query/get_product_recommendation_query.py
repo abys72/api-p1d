@@ -1,8 +1,10 @@
 from typing import List
-from odmantic.typing import Any
+
 from odm_p1d.collection.subsequence import Subsequence
-from pymongo import DESCENDING
 from odmantic import query
+from odmantic.typing import Any
+from pymongo import DESCENDING
+
 from app.shared.utils.logger import AppLogger
 
 
@@ -18,9 +20,7 @@ class GetProductRecommendationQuery:
         self.__logger.info("Fetching last 10 subsequences")
         try:
             subsequences = await self.__session.find(
-                Subsequence,
-                sort=query.desc(Subsequence.created_at),
-                limit=10
+                Subsequence, sort=query.desc(Subsequence.created_at), limit=10
             )
             self.__logger.info(f"subsequences '{subsequences}'.")
             return subsequences

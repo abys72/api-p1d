@@ -1,6 +1,5 @@
-from odmantic.typing import Any
-
 from odm_p1d.collection.subsequence import Subsequence
+from odmantic.typing import Any
 
 from app.shared.utils.logger import AppLogger
 
@@ -13,8 +12,12 @@ class InsertProductRecommendationQuery:
         self.__session = session
         self.__logger = logger
 
-    async def insert_product_recommendation(self, product_recommendation_model: Subsequence) -> None:
-        self.__logger.info(f"Inserting product recommendation: '{product_recommendation_model.__dict__}'.")
+    async def insert_product_recommendation(
+        self, product_recommendation_model: Subsequence
+    ) -> None:
+        self.__logger.info(
+            f"Inserting product recommendation: '{product_recommendation_model.__dict__}'."
+        )
         try:
             await self.__session.save(product_recommendation_model)
             self.__logger.info("All insert subsequence operations inserted.")

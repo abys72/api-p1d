@@ -1,7 +1,7 @@
 from odm_p1d.collection.user import User
+from odmantic.typing import Any
 
 from app.shared.utils.logger import AppLogger
-from odmantic.typing import Any
 
 
 class LoginUserQuery:
@@ -14,8 +14,9 @@ class LoginUserQuery:
 
     async def find_by_credentials(self, username: str, password: str) -> User | None:
         try:
-            user: User | None = await self.__session.find_one(User, User.name == username,
-                                                              User.password == password)
+            user: User | None = await self.__session.find_one(
+                User, User.name == username, User.password == password
+            )
             if user is None:
                 self.__logger.warning(f"No user found with username '{username}'.")
             return user
