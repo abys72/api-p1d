@@ -13,19 +13,18 @@ load_dotenv()
 
 async def create_initial_user():
     mongo_session = create_connection(
-        db_name=os.environ.get("MONGO_DB_NAME"),
-        db_url=Config.MONGO_DB_URL
+        db_name=os.environ.get("MONGO_DB_NAME"), db_url=Config.MONGO_DB_URL
     )
     await wait_for_mongo(mongo_session)
     try:
-        existing_user: None | User = await mongo_session.find_one(User, User.name == "admin")
+        existing_user: None | User = await mongo_session.find_one(
+            User, User.name == "admin"
+        )
         if existing_user:
             print("Admin user already exists.")
             return
         admin_user: User = User(
-            name="admin",
-            email="admin@api-p1d.com",
-            password="admin123"
+            name="admin", email="admin@api-p1d.com", password="admin123"
         )
         await mongo_session.save(admin_user)
         print("Admin user created successfully. admin admin123")

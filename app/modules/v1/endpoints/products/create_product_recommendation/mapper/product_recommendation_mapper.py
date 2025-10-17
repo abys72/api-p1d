@@ -1,14 +1,17 @@
 from typing import List
 
+from odm_p1d.collection.subsequence import Subsequence
+
 from app.modules.v1.endpoints.products.create_product_recommendation.model.product_recommendation_model import \
     ProductRecommendationModel
-from odm_p1d.collection.subsequence import Subsequence
 
 
 class ProductRecommendationMapper:
 
     @staticmethod
-    def map_get_subsequences(data: List[Subsequence]) -> List[ProductRecommendationModel]:
+    def map_get_subsequences(
+        data: List[Subsequence],
+    ) -> List[ProductRecommendationModel]:
         return [
             ProductRecommendationModel(subsequences_generated=item.subsequence)
             for item in data

@@ -1,5 +1,5 @@
 from typing import List
-from unittest.mock import MagicMock, AsyncMock
+from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
@@ -13,14 +13,20 @@ class TestCreateSubsequence:
     def product_recommendation_service(self) -> ProductRecommendationService:
         logger: MagicMock = MagicMock()
         product_recommendation_repository: AsyncMock = AsyncMock()
-        service = ProductRecommendationService(logger, product_recommendation_repository)
+        service = ProductRecommendationService(
+            logger, product_recommendation_repository
+        )
         return service
 
-    def test_create_subsequence(self, product_recommendation_service: ProductRecommendationService) -> None:
+    def test_create_subsequence(
+        self, product_recommendation_service: ProductRecommendationService
+    ) -> None:
         expected_subsequence: List[List[int]] = [[1], [2], [1, 2]]
         sequence: List[int] = [1, 2]
 
-        result_subsequence: List[List[int]] = product_recommendation_service._create_subsequences(sequence)
+        result_subsequence: List[List[int]] = (
+            product_recommendation_service._create_subsequences(sequence)
+        )
         assert len(result_subsequence) == len(expected_subsequence)
         for subsequence in result_subsequence:
             assert subsequence in expected_subsequence

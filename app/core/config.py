@@ -13,4 +13,6 @@ class Config:
 
     MONGO_HOST = os.environ.get("MONGO_HOST", "localhost")
 
-    MONGO_DB_URL = f"mongodb://{MONGO_ROOT_USER}:{MONGO_ROOT_PASSWORD}@{MONGO_HOST}:27017/"
+    MONGO_DB_URL = (
+        f"mongodb://{MONGO_ROOT_USER}:{MONGO_ROOT_PASSWORD}@{MONGO_HOST}:27017/"
+    )
